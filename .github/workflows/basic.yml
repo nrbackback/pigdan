@@ -1,10 +1,10 @@
 name: "CodeQL"
 
 on:
- push:
-   branches: 
-     - main # 更新该分支的代码会触发codeql
  workflow_dispatch: # 手动选择分支触发
+ # push:
+ #   branches: 
+     - main # 更新该分支的代码会触发codeql
 #  schedule:
 #     - cron: '0 14 * * *' # 这是需要写UTC时间，实际上会在北京时间运行每天晚上10点开始调度运行
 
