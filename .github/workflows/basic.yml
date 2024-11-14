@@ -1,0 +1,46 @@
+name: "CodeQL"
+
+on:
+ push:
+   branches: 
+     - main # 更新该分支的代码会触发codeql
+ workflow_dispatch: # 手动选择分支触发
+
+jobs:
+ analyze:
+   name: Analyze
+   runs-on: ubuntu-latest
+   permissions:
+     actions: read
+     contents: read
+     security-events: write
+
+   strategy:
+     fail-fast: false
+     matrix:
+       language: [ 'typescript' ] # typescript 支持扫描分析.ts, .tsx, .mts, .cts后缀的文件
+
+   steps:
+   - name: Checkout repository
+     uses: actions/checkout@v4
+
+   - name: Get latest commit info
+     run: |
+      CURRENT_BRANCH=$(git branch --show-current)
+      echo "Using branch: $CURRENT_BRANCH"
+      COMMIT_ID=$(git log -1 --format="%H")
+      echo "Latest Commit ID: $COMMIT_ID"
+      COMMIT_MESSAGE=$(git log -1 --format="%s")
+      echo "Latest Commit Message: $COMMIT_MESSAGE"
+      COMMIT_AUTHOR=$(git log -1 --format="%an")
+      echo "Latest Commit Author: $COMMIT_AUTHOR"
+
+   - name: Initialize CodeQL
+     uses: github/codeql-action/init@v3
+     with:
+       languages: ${{ matrix.language }}
+
+   - name: Perform CodeQL Analysis
+     uses: github/codeql-action/analyze@v3
+     with:
+       category: "/language:${{matrix.language}}"
