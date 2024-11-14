@@ -5,11 +5,13 @@ on:
    branches: 
      - main # 更新该分支的代码会触发codeql
  workflow_dispatch: # 手动选择分支触发
+#  schedule:
+#     - cron: '0 14 * * *' # 这是需要写UTC时间，实际上会在北京时间运行每天晚上10点开始调度运行
 
 jobs:
  analyze:
    name: Analyze
-   runs-on: ubuntu-latest
+   runs-on: self-hosted
    permissions:
      actions: read
      contents: read
@@ -23,17 +25,6 @@ jobs:
    steps:
    - name: Checkout repository
      uses: actions/checkout@v4
-
-   - name: Get latest commit info
-     run: |
-      CURRENT_BRANCH=$(git branch --show-current)
-      echo "Using branch: $CURRENT_BRANCH"
-      COMMIT_ID=$(git log -1 --format="%H")
-      echo "Latest Commit ID: $COMMIT_ID"
-      COMMIT_MESSAGE=$(git log -1 --format="%s")
-      echo "Latest Commit Message: $COMMIT_MESSAGE"
-      COMMIT_AUTHOR=$(git log -1 --format="%an")
-      echo "Latest Commit Author: $COMMIT_AUTHOR"
 
    - name: Initialize CodeQL
      uses: github/codeql-action/init@v3
