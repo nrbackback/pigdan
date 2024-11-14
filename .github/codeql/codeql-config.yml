@@ -3,7 +3,7 @@ queries:
 query-filters:
   - exclude:
       id: js/redundant-assignment
-  - exclude:
-      id: js/useless-assignment-to-local
+  # - exclude:
+  #     id: js/useless-assignment-to-local
   # - exclude:
   #     id: go/path-injection
