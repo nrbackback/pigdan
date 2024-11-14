@@ -33,9 +33,9 @@ jobs:
        languages: ${{ matrix.language }}
        # config-file: ./.github/codeql/codeql-config.yml
        config: |
-        disable-default-queries: true
-        queries:
-          - uses: security-and-quality
+        disable-default-queries: false
+        # queries:
+        #   - uses: security-and-quality
         query-filters:
           - exclude:
             id: js/redundant-assignment
