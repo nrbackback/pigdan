@@ -1,4 +1,4 @@
-name: "CodeQL"
+name: "CodeQL_My"
 
 on:
  workflow_dispatch: # 手动选择分支触发
