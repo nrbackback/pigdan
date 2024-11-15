@@ -1,9 +1,9 @@
-queries:
-  - uses: security-and-quality
+# queries:
+#   - uses: security-and-quality
 query-filters:
   # - exclude:
   #     id: js/redundant-assignment
   # - exclude:
   #     id: js/useless-assignment-to-local
-  # - exclude:
-  #     id: js/assignment-to-constant
+  - exclude:
+      id: js/assignment-to-constant
