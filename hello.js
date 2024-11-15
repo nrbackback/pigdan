@@ -8,8 +8,8 @@ function Rectangle(x, y, width, height) {
 	this.height = height;
 }
 
-const loc = null;
+const loc1 = null;
 if (dist < 10)
-    loc = "here";
+    loc1 = "here";
 else
-    loc = "there";
+    loc1 = "there";
