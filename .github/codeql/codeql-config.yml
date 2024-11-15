@@ -5,5 +5,5 @@ query-filters:
   #     id: js/redundant-assignment
   # - exclude:
   #     id: js/useless-assignment-to-local
-  - exclude:
-      id: js/assignment-to-constant
+  # - exclude:
+  #     id: js/assignment-to-constant
