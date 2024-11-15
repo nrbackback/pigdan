@@ -13,3 +13,7 @@ if (dist < 10)
     loc1 = "here";
 else
     loc1 = "there";
+
+function escapeQuotes(s) {
+  return s.replace("'", "''");
+}
